@@ -1,6 +1,6 @@
 const Teams = require('../models/team')
 const getAllTeams= async (req,res)=>{
-    const {name,location,uclwinner, sort,select}=req.query
+    const {name,location,uclwinner, sort,select,numberFilters}=req.query
     let queryObject={}
     let result = Teams.find(queryObject)
 
@@ -31,7 +31,7 @@ const getAllTeams= async (req,res)=>{
         result=result.select(selectList);
     }
 
-    if(numberFilters){
+    if(numberFilters){ 
         const operatorMap={
             '>': '$gt',
             '>=': '$gte',
